@@ -12,6 +12,7 @@
 
 
 ### 代码
+- 自己——单指针
 ```Python
 class Solution(object):
     def removeDuplicates(self, nums: [int]) -> int:
@@ -31,11 +32,36 @@ if __name__ == "__main__":
     for i in range(count):
         print(nums[i])
 ```
+
+- 参考——双指针
+```Python
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        i=0; j = 1 
+        while j < len(nums):
+            if nums[i] != nums[j]:
+                nums[i + 1] = nums[j]
+                i += 1
+            j += 1               
+        return i + 1
+
+
+if __name__ == "__main__":
+    nums = [0,0,1,1,1,2,2,3,3,4]
+    solu = Solution()
+    count = solu.removeDuplicates(nums)
+    for i in range(count):
+        print(nums[i])
+```
 ### 复杂度分析
 - 空间复杂度：O(1)
 - 时间复杂度：O(n);
-数组nums的未重复元素有count个，循环次数就是count
+数组元素个数为n，数组nums的未重复元素有count个，单指针的循环次数就是count；
+双指针的循环次数是n-1次
 
 ### LeetCode得分
+- 单指针
 <img src='grade_day_1.png'>
+- 双指针
+<img src='grade_day_1_double.png'>
 
